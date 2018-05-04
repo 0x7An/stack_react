@@ -6,16 +6,27 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Subheader />
-
-        <p className="body">
-          ... graphql
-        </p>
+      <div style={styles.app}>
+        <Header />       
+        
+        <br/>
+        
+        <div style={styles.container}>
+          <Subheader />
+        </div>
       </div>
     );
   }
 }
 
 export default App;
+
+const styles = {
+  app:{
+    fontFamily: 'sans-serif'
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column'
+  }
+}

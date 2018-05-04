@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export default class header extends Component {
   render() {
     return (
-      <header className="App-header">
-        <h1 className="App-title">Stack Questions</h1>
+      <header className="App-header" style={styles.header}>
+        <h1 style={styles.label}>Stack Questions</h1>
       </header>
     )
   }
 };
 
+const styles = {
+  header: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: "#eeeded",
+      height:70
+  },
+  label:{
+    fontSize: 40,
+    // alignSelf: 'flex-start'
+  }
+}

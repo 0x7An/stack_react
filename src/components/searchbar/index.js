@@ -1,45 +1,52 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Panel } from 'react-bootstrap';
 
 export default class parameters extends Component {
 
   render() {
     return (
-      <div style={styles.container}>
-          <div style={styles.label}><i>StackOverflow</i></div>
-          <div style={styles.parameters}>
-            <input 
-              style={styles.parameter}
-              type="text" 
-              placeholder="tag">
-              
-            </input>
-            <input 
-              style={styles.parameter}
-              type="text" 
-              placeholder="limit">
 
-            </input>
-            <input 
-              style={styles.parameter}
-              type="text" 
-              placeholder="score">
-
-            </input>
-            <input
-              style={styles.parameter} 
-              type="text" 
-              placeholder="sort">
-            </input>
-          </div>
+        <Panel>
+          <Panel.Heading>
+            <Panel.Title componentClass="h3">Buscar na API</Panel.Title>
+          </Panel.Heading>
           
-          <Button 
-            bsStyle="success"
-            style={styles.button}
-          >
-            Buscar
-          </Button>
-      </div>
+          <Panel.Body>  
+              <div style={styles.parameters}>
+                <input 
+                  style={styles.parameter}
+                  type="text" 
+                  placeholder="tag">
+                  
+                </input>
+                <input 
+                  style={styles.parameter}
+                  type="text" 
+                  placeholder="limit">
+
+                </input>
+                <input 
+                  style={styles.parameter}
+                  type="text" 
+                  placeholder="score">
+
+                </input>
+                <input
+                  style={styles.parameter} 
+                  type="text" 
+                  placeholder="sort">
+                </input>
+              </div>
+
+              <Button 
+                bsStyle="success"
+                style={styles.button}
+              >
+                Buscar
+              </Button>
+
+          </Panel.Body>
+        </Panel>
     )
   }
 };
@@ -48,26 +55,21 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    // backgroundColor: 'blue'
-  },
-  label: {
-    alignSelf: 'flex-start',
-    paddingBottom: 5,
-    marginLeft: 15,
-    fontSize: 24
+    padding: 15
   },
   parameters: {
+    display: 'flex',
     flexDirection: 'row',
-    marginBottom: 10,
-    marginLeft: 15,
+    marginBottom: 10
   },
   parameter:{
     marginRight:15,
-    fontSize: 18
+    fontSize: 14
   },
   button:{
-   alignSelf: 'flex-end',
-   fontSize: 16,
+   justifyContent: 'flex-end',
+  //  alignSelf: 'flex-end',
+   fontSize: 14,
    marginRight: 15
   }
 }

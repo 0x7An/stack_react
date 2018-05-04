@@ -4,10 +4,6 @@ import Searchbar from "../searchbar/";
 export default class Subheader extends Component {
   
     render() {
-        function handleClick() {
-            alert('You have clicked on me');
-        }
-
         return (
           <div style={styles.subheader} >
             <div>
@@ -20,12 +16,9 @@ export default class Subheader extends Component {
 
 const styles = {
     subheader: {
-        display: 'flex',
-        flex: '1 1 auto',
+        // backgroundColor: "#eeeded",
+        alignSelf: 'center',
         alignItems: 'center',
-        justifyContent: 'center',
-        width: 'auto', 
-        height:100, 
-        backgroundColor: "#FFF"
+        // justifyContent: 'center'
     }
 }
