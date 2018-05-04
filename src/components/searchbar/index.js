@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { divGroup, divControl, ControlLabel, HelpBlock, Label, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export default class parameters extends Component {
 
@@ -32,10 +32,13 @@ export default class parameters extends Component {
               placeholder="sort">
             </input>
           </div>
-          <button 
+          
+          <Button 
+            bsStyle="success"
             style={styles.button}
-            type="button">Click Me!
-          </button>
+          >
+            Buscar
+          </Button>
       </div>
     )
   }
