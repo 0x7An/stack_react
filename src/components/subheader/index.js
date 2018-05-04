@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+import Searchbar from "../searchbar/";
 
 export default class Subheader extends Component {
   
@@ -9,22 +9,23 @@ export default class Subheader extends Component {
         }
 
         return (
-          <Panel style={styles.panel} >
-            <Panel.Body>
-                Basic panel example
-            </Panel.Body>
-          </Panel>
+          <div style={styles.subheader} >
+            <div>
+                <Searchbar />
+            </div>
+          </div>
         )
     }
 };
 
 const styles = {
-    panel: {
+    subheader: {
         display: 'flex',
+        flex: '1 1 auto',
         alignItems: 'center',
         justifyContent: 'center',
         width: 'auto', 
         height:100, 
-        backgroundColor: "#333"
+        backgroundColor: "#FFF"
     }
 }

@@ -11,7 +11,7 @@ class App extends Component {
         <Subheader />
 
         <p className="body">
-          Stack overflow questions
+          ... graphql
         </p>
       </div>
     );

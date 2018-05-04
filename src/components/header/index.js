@@ -5,8 +5,9 @@ export default class header extends Component {
   render() {
     return (
       <header className="App-header">
-        <h1 className="App-title">Stack overflow</h1>
+        <h1 className="App-title">Stack Questions</h1>
       </header>
     )
   }
 };
+
