@@ -9,8 +9,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <Subheader />
-        
-        <p className="container">
+
+        <p className="body">
           Stack overflow questions
         </p>
       </div>
