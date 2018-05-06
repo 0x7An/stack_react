@@ -25,8 +25,13 @@ export default class Searchbar extends Component {
     this.setState({parameters: values});
   }
 
+  onSearch(){
+    console.log('asd');
+  }
+
   onFormSubmit(event){
     event.preventDefault();
+    this.onSearch();
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from "./components/header/";
-import Subheader from "./components/subheader/";
+import Subheader from "./containers/subheader/";
 import './App.css';
 
 //Apollo
