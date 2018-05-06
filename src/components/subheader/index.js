@@ -4,31 +4,21 @@ import Searchbar from "../searchbar/";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
-const ROOT_QUERY = gql`
-{
-  questions(tags:"javascript"){
-    score,
-    question_id,
-    tags,
-    owner{
-          user_id
-    }
-  }
-}
-`;
+import ROOT_QUERY from "../../data/rootquery";
 
 const StackQuestions = () => (
     <Query query={ROOT_QUERY}>
       {
         ({ loading, error, data }) => {
           if (loading) return <p>Loading data...</p>;
-          console.log('LOAD', loading);
           if (error) return <p>Error :(</p>;
-          console.log('erro',error);
-        return( 
-          <div>
-           <span>{ data.score }</span>
-          </div>
+
+          return( 
+            <ul>
+              {data.questions.map((question) => (
+                <li key={question.question_id}>{question.tags}</li>
+              ))}
+            </ul>
         );
       }
       }
@@ -51,9 +41,7 @@ export default class Subheader extends Component {
 
 const styles = {
     subheader: {
-        // backgroundColor: "#eeeded",
         alignSelf: 'center',
         alignItems: 'center',
-        // justifyContent: 'center'
     }
 }
