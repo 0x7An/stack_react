@@ -9,9 +9,9 @@ export default class Searchbar extends Component {
     this.state = {
         parameters: {
             score: 1000,
-            sort: "activity",
+            sort: "",
             limit: 10,
-            tag: ""
+            tag: "javascript"
         }
     };
   
@@ -27,7 +27,6 @@ export default class Searchbar extends Component {
 
   onFormSubmit(event){
     event.preventDefault();
-    console.log(this.state.parameters);
   }
 
   render() {
@@ -50,6 +49,7 @@ export default class Searchbar extends Component {
 
                 <input
                   name="score"
+                  type="number"
                   style={styles.parameter}
                   placeholder="score"
                   className="form-control"
@@ -57,17 +57,20 @@ export default class Searchbar extends Component {
                   onChange={this.onInputChange}
                 />
 
-                <input
+                <select
                   name="sort"
-                  style={styles.parameter}
-                  placeholder="sort"
-                  className="form-control"
-                  value={this.state.parameters.sort}
-                  onChange={this.onInputChange}
-                />
+                  style={styles.parameter} 
+                  value={this.state.parameters.sort} 
+                  onChange={this.handleChange}>
+                  <option defaultValue value="activity">Activity</option>
+                  <option value="votes">Votes</option>
+                  <option value="creation">Create</option>
+                  <option value="hot">Hot</option>
+                </select>
 
                 <input
                   name="limit"
+                  type="number"
                   style={styles.parameter}
                   placeholder="limit"
                   className="form-control"
