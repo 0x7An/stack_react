@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
 import { Button, Panel } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { getQuestions } from '../../store/actions';
+import { bindActionCreators } from 'redux';
 
-export default class Searchbar extends Component {
+class Searchbar extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-        parameters: {
-            score: 1000,
-            sort: "",
-            limit: 10,
-            tag: "javascript"
-        }
-    };
-  
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   };
-  
+
   onInputChange(event){
-    let values = this.state.parameters;
+    let values = this.props.parameters;
     values[event.target.name] = event.target.value;
     this.setState({parameters: values});
   }
 
   onSearch(){
-    console.log('asd');
+    this.props.getQuestions(this.props.parameters);
   }
 
   onFormSubmit(event){
@@ -35,65 +28,75 @@ export default class Searchbar extends Component {
   }
 
   render() {
-    return (
-        <Panel>
-          <Panel.Heading>
-            <Panel.Title componentClass="h3">Buscar na API</Panel.Title>
-          </Panel.Heading>
+        return (
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Buscar na API</Panel.Title>
+            </Panel.Heading>
+  
+            <Panel.Body>            
+              <div style={styles.parameters}>
+                  <input
+                    name="tag"
+                    type="text"
+                    style={styles.parameter}
+                    placeholder="tag"
+                    className="form-control"
+                    onChange={this.onInputChange}
+                    value={this.props.parameters.tag}
+                  />
+  
+                  <input
+                    name="score"
+                    type="number"
+                    style={styles.parameter}
+                    placeholder="score"
+                    className="form-control"
+                    value={this.props.parameters.score}
+                    onChange={this.onInputChange}
+                  />
+  
+                  <input
+                    name="sort"
+                    type="text"
+                    style={styles.parameter} 
+                    placeholder="activity"
+                    className="form-control"
+                    value={this.props.parameters.sort} 
+                    onChange={this.onInputChange}
+                  />
+  
+                  <input
+                    name="limit"
+                    type="number"
+                    style={styles.parameter}
+                    placeholder="limit"
+                    className="form-control"
+                    value={this.props.parameters.limit}
+                    onChange={this.onInputChange}
+                  />               
+                </div>
+                <Button
+                  onClick={this.onFormSubmit}
+                  bsStyle="success"
+                  style={styles.button}>
+                  Buscar
+                </Button>
+            </Panel.Body>
+          </Panel>
+      )
+    }
+  };
 
-          <Panel.Body>            
-            <div style={styles.parameters}>
-                <input
-                  name="tag"
-                  style={styles.parameter}
-                  placeholder="tag"
-                  className="form-control"
-                  onChange={this.onInputChange}
-                  value={this.state.parameters.tag}
-                />
+function MapDispatchToProps(dispatch){
+  return bindActionCreators({ getQuestions }, dispatch);
+}
 
-                <input
-                  name="score"
-                  type="number"
-                  style={styles.parameter}
-                  placeholder="score"
-                  className="form-control"
-                  value={this.state.parameters.score}
-                  onChange={this.onInputChange}
-                />
+const mapStateToProps = state =>(
+  { parameters: state.parameters }
+);
 
-                <select
-                  name="sort"
-                  style={styles.parameter} 
-                  value={this.state.parameters.sort} 
-                  onChange={this.handleChange}>
-                  <option defaultValue value="activity">Activity</option>
-                  <option value="votes">Votes</option>
-                  <option value="creation">Create</option>
-                  <option value="hot">Hot</option>
-                </select>
-
-                <input
-                  name="limit"
-                  type="number"
-                  style={styles.parameter}
-                  placeholder="limit"
-                  className="form-control"
-                  value={this.state.parameters.limit}
-                  onChange={this.onInputChange}
-                />               
-              </div>
-              <Button
-                onClick={this.onFormSubmit}
-                bsStyle="success"
-                style={styles.button}>
-                Buscar
-              </Button>
-          </Panel.Body>
-        </Panel>
-    )
-  }
-};
+export default connect(mapStateToProps, MapDispatchToProps)(Searchbar);
 
 const styles = {
   container: {
