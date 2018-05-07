@@ -9,14 +9,25 @@ export async function getQuestions({tag, limit, score, sort}){
       query: gql`
       {
         questions(tags:\"${tag}\", limit:${limit}, score:${score}, sort:\"${sort}\"){
-          question_id,
-          creation_date,
-          title,
           score,
+          question_id,
           tags,
           owner{
-            display_name
-          }
+                user_id,
+                reputation,
+                user_type,
+                accept_rate,
+                profile_image,
+                display_name
+                link
+          },
+          is_answered,
+          view_count,
+          answer_count,
+          last_activity_date,
+          creation_date,
+          link,
+          title
         }
       }
       `

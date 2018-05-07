@@ -7,7 +7,7 @@ class StackQuestions extends Component {
     renderQuestions(questions){
         return _.map(questions, question => {
             return(
-                <ViewQuestion data={question}/>
+                <ViewQuestion key={question.question_id} data={question}/>
             )
         })
     }
@@ -16,7 +16,7 @@ class StackQuestions extends Component {
         console.log('stack questions', this.props.data);
         return (
             <div style={styles.subheader} >
-                <div class="list">
+                <div className="list">
                     {this.renderQuestions(this.props.data)}
                 </div>
             </div>
