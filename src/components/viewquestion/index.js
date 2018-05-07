@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
 
 export default class ViewQuestion extends Component {
   render() {
@@ -7,12 +6,22 @@ export default class ViewQuestion extends Component {
 
     return (
       <div style={styles.container} key={question.question_id}>
-        <Paper>
-            Title:{question.title}
-            Votes:{question.score}
-            View Count:{question.view_count}
-            Awnser Count: {question.answer_count}
-         </Paper>
+        <div sytle={styles.group}>
+          <div style={styles.items}>
+            {question.score}
+          </div>
+          <div style={styles.items}>
+            {question.view_count}
+          </div>
+          <div style={styles.items}>
+            {question.answer_count}
+          </div>
+        </div>
+
+        <div style={styles.items}>
+          {question.title}
+        </div>
+
       </div>
     )
   }
@@ -24,5 +33,12 @@ const styles = {
       flexDirection: 'row',
       alignSelf: 'center',
       alignItems: 'center'
+    },
+    items: {
+      flex: 1
+    },
+    group:{
+      flexDirection: 'row',
+      flex: 1
     }
 }
