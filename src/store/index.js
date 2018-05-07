@@ -9,7 +9,7 @@ const state = {
         sort: 'activity',
         score: 100,
         limit: 100,
-        questions: {}
+        questions: []
     }
 };
 
