@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import ViewQuestion from "../../components/viewquestion";
 import _ from 'lodash';
 
-// this should be a list of questions
 class StackQuestions extends Component {
     
     renderQuestions(questions){
         return _.map(questions, question => {
             return(
-                // RENDER THE QUESTIONS !!
-                <h1>{question.title}</h1>
-
+                <ViewQuestion data={question}/>
             )
         })
     }
