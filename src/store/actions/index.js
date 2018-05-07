@@ -4,6 +4,7 @@ import { client } from "../../data/client";
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 
 export async function getQuestions({tag, limit, score, sort}){
+    
     let data = await client.query({
       query: gql`
       {
@@ -21,8 +22,6 @@ export async function getQuestions({tag, limit, score, sort}){
       `
     })
     .then(result => result);
-    
-    console.log('ACTION', data);
 
     return {
       type: GET_QUESTIONS,

@@ -21,8 +21,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state =>(
-  { parameters: state.parameters,
-    questions: state.parameters.questions }
+  { questions: state.questions }
 );
 
 export default connect( mapStateToProps )(App)

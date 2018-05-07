@@ -5,32 +5,36 @@ import { getQuestions } from '../../store/actions';
 import { bindActionCreators } from 'redux';
 
 class Searchbar extends Component {
-
   constructor(props) {
     super(props);
+
+    this.state = {
+        tag: 'javascript',
+        sort: 'activity',
+        score: 100,
+        limit: 100
+    }
+
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   };
 
   onInputChange(event){
-    let values = this.props.parameters;
+    let values = this.state;
     values[event.target.name] = event.target.value;
     this.setState({parameters: values});
   }
 
   onSearch(){
-    this.props.getQuestions(this.props.parameters);
+    this.props.getQuestions(this.state);
   }
 
   onFormSubmit(event){
     event.preventDefault();
-    console.log('SB this.props.parameters', this.props.parameters);
-    console.log('SB this.props.questions', this.props.questions);
     this.onSearch();
   }
 
   render() {
-        console.log('RENDER questions', this.props.questions);
         return (
           <Panel>
             <Panel.Heading>
@@ -46,7 +50,7 @@ class Searchbar extends Component {
                     placeholder="tag"
                     className="form-control"
                     onChange={this.onInputChange}
-                    value={this.props.parameters.tag}
+                    value={this.state.tag}
                   />
   
                   <input
@@ -55,7 +59,7 @@ class Searchbar extends Component {
                     style={styles.parameter}
                     placeholder="score"
                     className="form-control"
-                    value={this.props.parameters.score}
+                    value={this.state.score}
                     onChange={this.onInputChange}
                   />
   
@@ -65,7 +69,7 @@ class Searchbar extends Component {
                     style={styles.parameter} 
                     placeholder="activity"
                     className="form-control"
-                    value={this.props.parameters.sort} 
+                    value={this.state.sort} 
                     onChange={this.onInputChange}
                   />
   
@@ -75,7 +79,7 @@ class Searchbar extends Component {
                     style={styles.parameter}
                     placeholder="limit"
                     className="form-control"
-                    value={this.props.parameters.limit}
+                    value={this.state.limit}
                     onChange={this.onInputChange}
                   />               
                 </div>
@@ -96,8 +100,7 @@ function MapDispatchToProps(dispatch){
 }
 
 const mapStateToProps = state =>(
-  { parameters: state.parameters,
-    questions: state.parameters.questions }
+  { questions: state.questions }
 );
 
 export default connect(mapStateToProps, MapDispatchToProps)(Searchbar);

@@ -4,13 +4,8 @@ import { createStore, applyMiddleware } from 'redux';
 import QuestionsReducer from './reducers/reducer_questions';
 
 const state = {
-    parameters: {
-        tag: 'javascript',
-        sort: 'activity',
-        score: 100,
-        limit: 100,
-        questions: []
-    }
+    loading: false,
+    questions: []
 };
 
 const store = applyMiddleware(ReduxPromise)(createStore);

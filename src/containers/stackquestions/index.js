@@ -11,7 +11,6 @@ class StackQuestions extends Component {
             <div style={styles.subheader} >
                 <div>
                   lista:
-                  {this.props.data[0]}
                 </div>
             </div>
             )
