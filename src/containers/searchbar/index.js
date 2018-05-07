@@ -63,15 +63,20 @@ class Searchbar extends Component {
                     onChange={this.onInputChange}
                   />
   
-                  <input
-                    name="sort"
-                    type="text"
-                    style={styles.parameter} 
-                    placeholder="activity"
-                    className="form-control"
-                    value={this.state.sort} 
-                    onChange={this.onInputChange}
-                  />
+                  <select
+                      name="sort"
+                      style={styles.parameter} 
+                      placeholder="activity"
+                      className="form-control"
+                      value={this.state.sort} 
+                      onChange={this.onInputChange}>
+                    <option value="activity">Activity</option>
+                    <option value="votes">Votes</option>
+                    <option value="creation">Creation</option>
+                    <option value="hot">Hot</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                  </select>
   
                   <input
                     name="limit"
