@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import Searchbar from "../searchbar/";
-import { connect } from 'react-redux';
 import _ from 'lodash';
 
+// this should be a list of questions
 class StackQuestions extends Component {
+    
     render() {
+        console.log('stack questions', this.props.data);
         return (
             <div style={styles.subheader} >
                 <div>
-                    <Searchbar />
-                    {this.props.questions[0]}
+                  lista:
+                  {this.props.data[0]}
                 </div>
             </div>
             )
         }
     };
 
-const mapStateToProps = state =>( 
-    { questions: state.parameters } 
-);
-
-export default connect( mapStateToProps )(StackQuestions)
+export default StackQuestions;
 
 const styles = {
     subheader: {

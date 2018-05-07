@@ -24,10 +24,13 @@ class Searchbar extends Component {
 
   onFormSubmit(event){
     event.preventDefault();
+    console.log('SB this.props.parameters', this.props.parameters);
+    console.log('SB this.props.questions', this.props.questions);
     this.onSearch();
   }
 
   render() {
+        console.log('RENDER questions', this.props.questions);
         return (
           <Panel>
             <Panel.Heading>
@@ -93,7 +96,8 @@ function MapDispatchToProps(dispatch){
 }
 
 const mapStateToProps = state =>(
-  { parameters: state.parameters }
+  { parameters: state.parameters,
+    questions: state.parameters.questions }
 );
 
 export default connect(mapStateToProps, MapDispatchToProps)(Searchbar);

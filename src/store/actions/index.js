@@ -21,7 +21,9 @@ export async function getQuestions({tag, limit, score, sort}){
       `
     })
     .then(result => result);
-    console.log(data);
+    
+    console.log('ACTION', data);
+
     return {
       type: GET_QUESTIONS,
       payload: data
