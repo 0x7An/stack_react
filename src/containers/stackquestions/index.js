@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 import Moment from 'react-moment';
 
 class StackQuestions extends Component {
-    
+
     renderQuestions(questions){
         return _.map(questions, question => {
             return(

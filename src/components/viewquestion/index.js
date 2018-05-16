@@ -6,7 +6,8 @@ export default class ViewQuestion extends Component {
 
     return (
       <div style={styles.container} key={question.question_id}>
-        <div sytle={styles.group}>
+        
+        <div sytle={styles.stats}>
           <div style={styles.items}>
             {question.score}
           </div>
@@ -18,8 +19,9 @@ export default class ViewQuestion extends Component {
           </div>
         </div>
 
-        <div style={styles.items}>
+        <div style={styles.description}>
           {question.title}
+          {question.creation_date}
         </div>
 
       </div>
@@ -34,11 +36,14 @@ const styles = {
       alignSelf: 'center',
       alignItems: 'center'
     },
-    items: {
-      flex: 1
+    stats:{
+      flex: 1,
+      flexDirection: 'column',
+      fontSize: 8,
+      fontColor: 'blue'
     },
-    group:{
-      flexDirection: 'row',
-      flex: 1
+    description:{
+      flex: 3,
+      flexDirection: 'column'
     }
 }
